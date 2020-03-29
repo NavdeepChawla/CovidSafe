@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MobileActivity">
+
+    <TextView
+        android:layout_width="128dp"
+        android:layout_height="41dp"
+        android:text="@string/hithere"
+        android:textColor="@color/black"
+        android:fontFamily="EuropaNuova"
+        android:textStyle="bold"
+        android:textSize="32dp"
+        android:layout_marginTop="124dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="211dp"/>
+
+    <TextView
+        android:layout_width="198dp"
+        android:layout_height="26dp"
+        android:text="@string/enterphno"
+        android:fontFamily="EuropaNuova"
+        android:textStyle="bold"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginRight="121dp"
+        android:textSize="20dp"/>
+
+
+    <FrameLayout
+        android:layout_width="302dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="73dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="37dp"
+        android:background="@drawable/mobile_no_input">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:id="@+id/mobileedttxt"
+        >
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:fontFamily="EuropaNuova-Regular"
+            android:textColor="#15135B"
+            android:textSize="17dp"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/areacode"
+            />
+
+        <EditText
+            android:background="@null"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="phone"
+            android:digits="0123456789+"
+            android:hint="@string/enterphno"
+            android:fontFamily="EuropaNuova-Regular"
+            android:textColor="#8015135B"
+            android:id="@+id/phnoinput"/>
+    </LinearLayout>
+
+    </FrameLayout>
+
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:layout_width="304dp"
+        android:layout_height="18dp"
+        android:text="@string/fourdigitcode"
+        android:layout_marginLeft="35.5dp"
+        android:layout_marginRight="35.5dp"
+        android:fontFamily="EuropaNuova-Regular"
+        android:textSize="14dp"
+        android:textColor="#B315135B"
+        android:layout_marginTop="28dp"
+        android:layout_below="@id/mobileedttxt"
+        android:id="@+id/rlt1"/>
+
+    <Button
+        android:layout_width="194dp"
+        android:layout_height="49dp"
+        android:text="@string/next"
+        android:textColor="@color/white"
+        android:layout_below="@id/rlt1"
+        android:fontFamily="EuropaNuova"
+        android:textSize="18dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="90.5dp"
+        android:layout_marginLeft="90.5dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/start_rounded_button"
+        android:id="@+id/nxtbutton"
+        />
+
+
+</LinearLayout>

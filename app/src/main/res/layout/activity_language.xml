@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".LanguageActivity">
+
+    <TextView
+        android:layout_width="156dp"
+        android:layout_height="41dp"
+        android:text="@string/txtlanguage"
+        android:textColor="#15135B"
+        android:fontFamily="EuropaNuova"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="183dp"
+        android:layout_marginTop="124dp"
+        android:textStyle="bold"
+        android:textSize="32dp"
+        android:layout_marginBottom="6dp"
+        />
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/plssltlng"
+        android:textColor="#9915135B"
+        android:textSize="20sp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="155dp"
+        android:layout_marginBottom="51dp"
+        />
+
+    <FrameLayout
+        android:id="@+id/engbut"
+        android:layout_width="140dp"
+        android:layout_height="54dp"
+        android:layout_marginLeft="93.5dp"
+        android:layout_marginRight="141.5dp"
+        >
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="38dp"
+        android:text="@string/English"
+        android:textSize="25dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:textColor="#15135B"
+        android:id="@+id/english"
+        />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/hinbut"
+        android:layout_width="140dp"
+        android:layout_height="54dp"
+        android:layout_marginLeft="93.5dp"
+        android:layout_marginRight="141.5dp"
+        android:layout_marginTop="10dp"
+        >
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="38dp"
+            android:text="@string/English"
+            android:textSize="25dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:textColor="#15135B"
+            android:id="@+id/hindi"
+            />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/marbut"
+        android:layout_width="140dp"
+        android:layout_height="54dp"
+        android:layout_marginLeft="93.5dp"
+        android:layout_marginRight="141.5dp"
+        android:layout_marginTop="10dp"
+        >
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="38dp"
+            android:text="@string/English"
+            android:textSize="25dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:textColor="#15135B"
+            android:id="@+id/marathi"
+            />
+
+    </FrameLayout>
+
+
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="100dp"
+        android:layout_height="24dp"
+        android:text="@string/seemore"
+        android:textSize="19dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="175dp"
+        android:id="@+id/seemore"
+        android:textColor="#15135B"/>
+
+    <Button
+        android:layout_width="194dp"
+        android:layout_height="49dp"
+        android:text="@string/proceedbtntxt"
+        android:textSize="15dp"
+        android:textColor="@color/white"
+        android:layout_marginLeft="90.5dp"
+        android:layout_marginRight="90.5dp"
+        android:layout_marginTop="105dp"
+        android:id="@+id/proceed"
+        android:background="@drawable/start_rounded_button"/>
+
+</LinearLayout>

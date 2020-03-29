@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ProfileActivity">
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="41dp"
+        android:text="Profile"
+        android:textSize="32dp"
+        android:fontFamily="EuropaNuova"
+        android:textStyle="bold"
+        android:textColor="#15135B"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="106dp"
+        android:layout_marginRight="243dp"/>
+    
+    <TextView
+        android:layout_width="236dp"
+        android:layout_height="26dp"
+        android:text="Please enter your details"
+        android:textSize="20dp"
+        android:fontFamily="EuropaNuova"
+        android:textColor="#9915135B"
+        android:textStyle="bold"
+        android:layout_marginRight="103dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="6dp"/>
+
+    <ImageView
+        android:layout_width="69dp"
+        android:layout_height="69dp"
+        android:src="@drawable/user"
+        android:layout_marginTop="21dp"
+        android:layout_marginLeft="153dp"
+        android:layout_marginRight="153dp"/>
+
+    <TextView
+        android:layout_width="48dp"
+        android:layout_height="22dp"
+        android:text="Name"
+        android:textSize="17dp"
+        android:fontFamily="EuropaNuova"
+        android:textColor="#15135B"
+        android:textStyle="bold"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="35dp"/>
+
+    <EditText
+        android:background="@null"
+        android:layout_width="299dp"
+        android:layout_height="44dp"
+        android:inputType="text"
+        android:hint="Enter your name"
+        android:fontFamily="EuropaNuova-Regular"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="40dp"
+        android:textColor="#8015135B"
+        android:id="@+id/nameinput"/>
+
+    <TextView
+        android:layout_width="48dp"
+        android:layout_height="22dp"
+        android:text="Email"
+        android:textSize="17dp"
+        android:fontFamily="EuropaNuova"
+        android:textColor="#15135B"
+        android:textStyle="bold"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="35dp"/>
+
+    <EditText
+        android:background="@null"
+        android:layout_width="299dp"
+        android:layout_height="44dp"
+        android:inputType="textEmailAddress"
+        android:hint="Enter your email id"
+        android:fontFamily="EuropaNuova-Regular"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="40dp"
+        android:textColor="#8015135B"
+        android:id="@+id/emailinput"/>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="22dp"
+        android:text="Date of Birth"
+        android:textSize="17dp"
+        android:fontFamily="EuropaNuova"
+        android:textColor="#15135B"
+        android:textStyle="bold"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="35dp"/>
+
+    <EditText
+        android:background="@null"
+        android:layout_width="299dp"
+        android:layout_height="44dp"
+        android:inputType="date"
+        android:hint="DD/MM/YYYY"
+        android:fontFamily="EuropaNuova-Regular"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="40dp"
+        android:textColor="#8015135B"
+        android:id="@+id/dateofbirth"/>
+
+    <Button
+        android:id="@+id/saveandproceed"
+        android:layout_width="226dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="112.5dp"
+        android:layout_marginLeft="91dp"
+        android:layout_marginRight="90dp"
+        android:background="@drawable/start_rounded_button"
+        android:fontFamily="EuropaNuova"
+        android:text="Save and Proceed"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+</LinearLayout>
+</ScrollView>
