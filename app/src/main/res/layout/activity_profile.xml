@@ -11,7 +11,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ProfileActivity">
+    tools:context=".AuthenticationActivity.ProfileActivity">
 
     <TextView
         android:layout_width="150dp"
@@ -113,6 +113,29 @@
         android:layout_marginRight="40dp"
         android:textColor="#8015135B"
         android:id="@+id/dateofbirth"/>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="22dp"
+        android:text="Hometown"
+        android:textSize="17dp"
+        android:fontFamily="EuropaNuova"
+        android:textColor="#15135B"
+        android:textStyle="bold"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="35dp"/>
+
+    <EditText
+        android:background="@null"
+        android:layout_width="299dp"
+        android:layout_height="44dp"
+        android:inputType="text"
+        android:hint="Enter your hometown"
+        android:fontFamily="EuropaNuova-Regular"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="40dp"
+        android:textColor="#8015135B"
+        android:id="@+id/hometown"/>
 
     <Button
         android:id="@+id/saveandproceed"

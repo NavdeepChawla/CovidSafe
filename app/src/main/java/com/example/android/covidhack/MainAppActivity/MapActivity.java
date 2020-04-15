@@ -1,4 +1,4 @@
-package com.example.android.covidhack;
+package com.example.android.covidhack.MainAppActivity;
 
 import android.Manifest;
 import android.content.Context;
@@ -12,6 +12,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.android.covidhack.Utils.BottomNavigationViewHelper;
+import com.example.android.covidhack.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;

@@ -1,6 +1,174 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<merge  xmlns:android="http://schemas.android.com/apk/res/android">
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical"
+       >
+       <TextView
+           android:layout_width="283dp"
+           android:layout_height="wrap_content"
+           android:text="Current status"
+           android:fontFamily="EuropaNuova"
+           android:textStyle="bold"
+           android:textSize="22dp"
+           android:textColor="#15135B"
+           android:layout_marginTop="13dp"
+           android:layout_marginLeft="46dp"
+           android:layout_marginRight="46dp"
+           android:textAlignment="center"/>
+       
+       <FrameLayout
+           android:layout_width="113dp"
+           android:layout_height="113dp"
+           android:layout_marginLeft="131dp"
+           android:layout_marginRight="131dp"
+           android:layout_marginTop="5dp"
+           android:background="@drawable/activity_background_circle">
+           
+           <ImageView
+               android:layout_width="35dp"
+               android:layout_height="35dp"
+               android:src="@drawable/accessibility24px"
+               android:layout_marginLeft="40dp"
+               android:layout_marginRight="40.5dp"
+               android:layout_marginTop="34dp"
+               />
 
-</android.support.constraint.ConstraintLayout>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="idle"
+               android:id="@+id/txt_activity"
+               android:textSize="17dp"
+               android:textStyle="bold"
+               android:layout_marginTop="67dp"
+               android:layout_marginLeft="35dp"
+               android:fontFamily="EuropaNuova"
+               android:textColor="#15135B"
+               />
+
+       </FrameLayout>
+       
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_marginTop="27dp">
+           
+           <TextView
+               android:layout_width="150dp"
+               android:layout_height="22dp"
+               android:layout_marginLeft="32dp"
+               android:fontFamily="EuropaNuova-Regular"
+               android:textSize="17dp"
+               android:textColor="#15135B"
+               android:text="Lat : 0.0"
+               android:id="@+id/txt_lattitude"/>
+
+           <TextView
+               android:layout_width="150dp"
+               android:layout_height="22dp"
+               android:layout_marginRight="77dp"
+               android:fontFamily="EuropaNuova-Regular"
+               android:textSize="17dp"
+               android:textColor="#15135B"
+               android:text="Lon : 0.0"
+               android:id="@+id/txt_longitude"/>
+
+       </LinearLayout>
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="People around you: 0"
+           android:id="@+id/txt_ppl_around"
+           android:fontFamily="EuropaNuova"
+           android:textSize="17dp"
+           android:textColor="#15135B"
+           android:textStyle="bold"
+           android:layout_marginTop="32dp"
+           android:layout_marginLeft="28.5dp"
+           />
+
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="150dp"
+           android:orientation="horizontal">
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="0%"
+           android:id="@+id/prob"
+           android:textSize="32dp"
+           android:textStyle="bold"
+           android:textColor="	#008000"
+           android:layout_marginLeft="53dp"
+           android:layout_marginTop="52dp"/>
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Chance of you being infected with CoViD-19"
+               android:textSize="17dp"
+               android:textStyle="bold"
+               android:textColor="#15135B"
+               android:layout_marginTop="40dp"
+               android:layout_marginLeft="33dp"
+               android:layout_marginRight="20dp"/>
+
+       </LinearLayout>
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Please follow the following instruictions"
+           android:textSize="17dp"
+           android:textStyle="bold"
+           android:textColor="#15135B"
+           android:layout_marginTop="40dp"
+           android:layout_marginLeft="15dp"/>
+       
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:background="@color/white"
+           android:layout_marginLeft="13dp"
+           android:layout_marginRight="13dp"
+           android:paddingBottom="20dp"
+           android:layout_marginTop="15dp"
+           android:layout_marginBottom="20dp">
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="44dp"
+           android:text="1.Self quarantine yourself and maintain distance from your friends and family"
+           android:textSize="17dp"
+           android:textColor="#15135B"
+           android:layout_marginTop="40dp"
+           android:layout_marginLeft="24dp"
+           android:layout_marginRight="24dp"/>
+
+       <TextView
+           android:layout_width="280dp"
+           android:layout_height="match_parent"
+           android:text="2.Gauge the severity of symptoms"
+           android:textSize="17dp"
+           android:textColor="#15135B"
+           android:layout_marginTop="11dp"
+           android:layout_marginLeft="24dp"/>
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="44dp"
+           android:text="3.Report to the nearest testing facility to get tested"
+           android:textSize="17dp"
+           android:textColor="#15135B"
+           android:layout_marginTop="11dp"
+           android:layout_marginLeft="24dp"
+           android:layout_marginRight="24dp"/>
+       </LinearLayout>
+
+
+   </LinearLayout>
+</merge>

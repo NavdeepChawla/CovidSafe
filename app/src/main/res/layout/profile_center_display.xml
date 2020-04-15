@@ -1,6 +1,124 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<merge  xmlns:android="http://schemas.android.com/apk/res/android" >
 
-</android.support.constraint.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="69dp"
+            android:layout_marginTop="69dp">
+            
+            <ImageView
+                android:layout_width="69dp"
+                android:layout_height="69dp"
+                android:src="@drawable/user"
+                android:layout_marginLeft="37dp"
+                android:id="@+id/profilepic"/>
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sample txt"
+                android:textColor="#15135B"
+                android:textSize="20dp"
+                android:fontFamily="EuropaNuova"
+                android:id="@+id/profilename"
+                android:textStyle="bold"
+                android:layout_toRightOf="@id/profilepic"
+                android:layout_marginLeft="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sample Place"
+                android:fontFamily="EuropaNuova-Regular"
+                android:textSize="17dp"
+                android:textColor="#15135B"
+                android:layout_toRightOf="@id/profilepic"
+                android:layout_below="@id/profilename"
+                android:id="@+id/profileplace"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="1dp"/>
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="35dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:text="DOB :"
+                android:textColor="#15135B"
+                android:fontFamily="EuropaNuova"
+                android:textStyle="bold"
+                android:layout_marginLeft="44dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sample DOB"
+                android:id="@+id/profiledob"
+                android:fontFamily="EuropaNuova-Regular"
+                android:textSize="17dp"
+                android:textColor="#15135B"
+                android:layout_marginLeft="8dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="25dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:text="Email :"
+                android:textColor="#15135B"
+                android:fontFamily="EuropaNuova"
+                android:textStyle="bold"
+                android:layout_marginLeft="44dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sample Email"
+                android:id="@+id/profileemail"
+                android:fontFamily="EuropaNuova-Regular"
+                android:textSize="17dp"
+                android:textColor="#15135B"
+                android:layout_marginLeft="8dp"
+                />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="92dp"
+            android:layout_marginLeft="88dp"
+            android:id="@+id/barcodeimage"
+            android:background="@color/black"
+            android:scaleType="fitXY"/>
+        
+    </LinearLayout>
+
+    </ScrollView>
+</merge>

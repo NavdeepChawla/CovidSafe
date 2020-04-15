@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".ContactActivity"
+    tools:context=".MainAppActivity.ContactActivity.ContactActivity"
     android:background="#EEF3FF">
 
-    <include layout="@layout/main_top_bar"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Rellayout1">
 
+        <include layout="@layout/main_top_bar"/>
+    </RelativeLayout>
+
+    <!--
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@id/Rellayout1"
+        android:id="@+id/Rellayout2"
+        android:layout_marginBottom="50dp">
 
     <ImageView
         android:layout_width="152dp"
@@ -38,7 +47,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="You haven't been in close proximity with only infected people"
+            android:text="You haven't been in close proximity with any infected people"
             android:layout_below="@id/nothing"
             android:textSize="17dp"
             android:id="@+id/ded"
@@ -48,8 +57,32 @@
             android:textColor="#15135B"
             android:layout_marginTop="24dp"/>
 
+    </RelativeLayout>
+    -->
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp"
+        android:layout_below="@id/Rellayout1">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            >
+
+            <include layout="@layout/contact_center_display"/>
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <include layout="@layout/bottom_navigation_bar"/>
 
     </RelativeLayout>
 
 
-</LinearLayout>
+</RelativeLayout>

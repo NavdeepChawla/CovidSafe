@@ -1,8 +1,10 @@
-package com.example.android.covidhack;
+package com.example.android.covidhack.AuthenticationActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import androidx.annotation.NonNull;
+
+import com.example.android.covidhack.R;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,6 +31,7 @@ public class VerificationActivity extends AppCompatActivity implements TextWatch
 
     private Button btn;
     private EditText et1, et2, et3, et4,et5,et6;
+    private TextView resendotp;
 
     private FirebaseAuth mAuth;
     private String mobile;
@@ -43,6 +47,8 @@ public class VerificationActivity extends AppCompatActivity implements TextWatch
         mAuth = FirebaseAuth.getInstance();
         Intent intent=getIntent();
         mobile=intent.getStringExtra("number");
+
+        resendotp=findViewById(R.id.resendotp);
 
         sendVerificationCode(mobile);
 
@@ -64,6 +70,14 @@ public class VerificationActivity extends AppCompatActivity implements TextWatch
 
         final String otp=""+et1.getText()+et2.getText()+et3.getText()+et4.getText()+et5.getText()+et6.getText();
 
+        /*
+        resendotp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendVerificationCode(mobile);
+            }
+        });
+
         /**
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,9 +87,9 @@ public class VerificationActivity extends AppCompatActivity implements TextWatch
             }
         });
          **/
-
         //if the automatic sms detection did not work, user can also enter the code manually
         //so adding a click listener to the button
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -174,7 +188,7 @@ public class VerificationActivity extends AppCompatActivity implements TextWatch
 
         @Override
         public void onVerificationFailed(FirebaseException e) {
-            Toast.makeText(mcontext, e.getMessage()+mobile, Toast.LENGTH_LONG).show();
+            Toast.makeText(mcontext,R.string.ver_error, Toast.LENGTH_LONG).show();
         }
 
         @Override
@@ -216,14 +230,8 @@ public class VerificationActivity extends AppCompatActivity implements TextWatch
                                 message = "Invalid code entered...";
                             }
 
-                            Snackbar snackbar = Snackbar.make(findViewById(R.id.parent), message, Snackbar.LENGTH_LONG);
-                            snackbar.setAction("Dismiss", new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-
-                                }
-                            });
-                            snackbar.show();
+                            Toast toast=Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG);
+                            toast.show();
                         }
                     }
                 });

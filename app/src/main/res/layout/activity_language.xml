@@ -1,126 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".LanguageActivity">
+    tools:context=".AuthenticationActivity.LanguageActivity">
+
 
     <TextView
-        android:layout_width="156dp"
-        android:layout_height="41dp"
-        android:text="@string/txtlanguage"
-        android:textColor="#15135B"
-        android:fontFamily="EuropaNuova"
-        android:layout_marginLeft="36dp"
-        android:layout_marginRight="183dp"
-        android:layout_marginTop="124dp"
-        android:textStyle="bold"
-        android:textSize="32dp"
-        android:layout_marginBottom="6dp"
-        />
-
-    <TextView
-        android:layout_width="200dp"
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/plssltlng"
-        android:textColor="#9915135B"
-        android:textSize="20sp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginRight="155dp"
-        android:layout_marginBottom="51dp"
-        />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="100dp"
+        android:fontFamily="EuropaNuova"
+        android:text="@string/lang_txtlanguage"
+        android:textColor="#15135B"
+        android:textSize="32dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
         android:id="@+id/engbut"
         android:layout_width="140dp"
         android:layout_height="54dp"
-        android:layout_marginLeft="93.5dp"
-        android:layout_marginRight="141.5dp"
-        >
+        android:layout_marginTop="51dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.464"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
 
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="38dp"
-        android:text="@string/English"
-        android:textSize="25dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="5dp"
-        android:textColor="#15135B"
-        android:id="@+id/english"
-        />
+        <TextView
+            android:layout_gravity="center"
+            android:id="@+id/english"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lang_english"
+            android:textColor="#15135B"
+            android:textSize="25dp" />
 
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/hinbut"
+        android:id="@+id/gerbut"
         android:layout_width="140dp"
         android:layout_height="54dp"
-        android:layout_marginLeft="93.5dp"
-        android:layout_marginRight="141.5dp"
-        android:layout_marginTop="10dp"
-        >
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.464"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dutbut">
 
         <TextView
-            android:layout_width="100dp"
-            android:layout_height="38dp"
-            android:text="@string/English"
-            android:textSize="25dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
+            android:layout_gravity="center"
+            android:id="@+id/german"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lang_german"
             android:textColor="#15135B"
-            android:id="@+id/hindi"
-            />
-
+            android:textSize="25dp" />
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/marbut"
+        android:id="@+id/frebut"
         android:layout_width="140dp"
         android:layout_height="54dp"
-        android:layout_marginLeft="93.5dp"
-        android:layout_marginRight="141.5dp"
-        android:layout_marginTop="10dp"
-        >
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.464"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gerbut">
 
         <TextView
-            android:layout_width="100dp"
-            android:layout_height="38dp"
-            android:text="@string/English"
-            android:textSize="25dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
+            android:id="@+id/french"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lang_french"
             android:textColor="#15135B"
-            android:id="@+id/marathi"
-            />
-
+            android:textSize="25dp" />
     </FrameLayout>
 
+    <FrameLayout
+        android:id="@+id/spabut"
+        android:layout_width="145dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frebut">
 
-
-    <TextView
-        android:layout_marginTop="10dp"
-        android:layout_width="100dp"
-        android:layout_height="24dp"
-        android:text="@string/seemore"
-        android:textSize="19dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="175dp"
-        android:id="@+id/seemore"
-        android:textColor="#15135B"/>
+        <TextView
+            android:id="@+id/spanish"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lang_spanish"
+            android:textColor="#15135B"
+            android:textSize="25dp" />
+    </FrameLayout>
 
     <Button
-        android:layout_width="194dp"
-        android:layout_height="49dp"
-        android:text="@string/proceedbtntxt"
-        android:textSize="15dp"
-        android:textColor="@color/white"
-        android:layout_marginLeft="90.5dp"
-        android:layout_marginRight="90.5dp"
-        android:layout_marginTop="105dp"
         android:id="@+id/proceed"
-        android:background="@drawable/start_rounded_button"/>
+        android:layout_width="205dp"
+        android:layout_height="49dp"
+        android:background="@drawable/start_rounded_button"
+        android:text="@string/lang_proceed_btn_txt"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spabut"
+        app:layout_constraintVertical_bias="0.329" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="184dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/lang_pls_slt_lng"
+        android:textColor="#9915135B"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <FrameLayout
+        android:id="@+id/dutbut"
+        android:layout_width="140dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.464"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/engbut">
+
+        <TextView
+            android:layout_gravity="center"
+            android:id="@+id/dutch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lang_dutch"
+            android:textColor="#15135B"
+            android:textSize="25dp" />
+    </FrameLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

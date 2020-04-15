@@ -1,4 +1,4 @@
-package com.example.android.covidhack;
+package com.example.android.covidhack.MainAppActivity;
 
 import android.content.Context;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.android.covidhack.Utils.BottomNavigationViewHelper;
+import com.example.android.covidhack.R;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 public class ProbabilityActivity extends AppCompatActivity {

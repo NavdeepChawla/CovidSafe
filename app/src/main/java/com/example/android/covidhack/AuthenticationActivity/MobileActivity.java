@@ -1,4 +1,4 @@
-package com.example.android.covidhack;
+package com.example.android.covidhack.AuthenticationActivity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.android.covidhack.R;
 
 
 public class MobileActivity extends AppCompatActivity {
@@ -33,7 +35,7 @@ public class MobileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String number=ar+phnumber.getText().toString().trim();
-                Intent intent= new Intent(MobileActivity.this,VerificationActivity.class);
+                Intent intent= new Intent(MobileActivity.this, VerificationActivity.class);
                 intent.putExtra("number",number);
                 startActivity(intent);
             }

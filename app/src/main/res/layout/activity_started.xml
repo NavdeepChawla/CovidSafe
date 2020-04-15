@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -11,81 +11,85 @@
 
     <FrameLayout
         android:id="@+id/logo"
-        android:layout_width="68.9dp"
-        android:layout_height="83.9dp"
-        android:layout_marginTop="114.5dp"
-        android:layout_marginLeft="153.5dp"
-        android:layout_marginRight="153.5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="83dp"
         android:background="@drawable/shield"
-       >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:layout_width="49.8dp"
-            android:layout_height="49.8dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:background="#0000"
             android:scaleType="fitCenter"
             android:src="@drawable/virus" />
-
     </FrameLayout>
-
 
     <TextView
         android:id="@+id/compname"
-        android:layout_width="140dp"
-        android:layout_height="41dp"
-        android:fontFamily="EuropaNuova"
-        android:textStyle="bold"
-        android:textSize="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/logo"
         android:layout_centerHorizontal="true"
-        android:text="@string/compname"
+        android:layout_marginTop="23dp"
+        android:fontFamily="EuropaNuova"
+        android:text="@string/start_comp_name"
         android:textColor="@color/compcoolor"
-        android:layout_marginRight="117.5dp"
-        android:layout_marginLeft="117.5dp"
-        android:layout_marginTop="22.6dp"
-        />
+        android:textSize="32dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <TextView
-        android:layout_width="302dp"
-        android:layout_height="44dp"
+        android:id="@+id/tagline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/compname"
-        android:text="Lorem ipsum dolor amet, consectetur adipiscind inet deli"
+        android:layout_marginTop="33dp"
+        android:fontFamily="EuropaNuova"
+        android:text="@string/start_comp_tagline"
         android:textSize="17dp"
         android:textStyle="bold"
-        android:fontFamily="EuropaNuova"
-        android:layout_marginTop="77.5dp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginRight="37dp"
-        android:id="@+id/tagline"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/compname" />
 
     <Button
-        android:layout_below="@id/tagline"
         android:id="@+id/getstartedbtn"
-        android:layout_width="194dp"
+        android:layout_width="250dp"
         android:layout_height="49dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="91dp"
-        android:layout_marginRight="90dp"
+        android:layout_below="@id/tagline"
+        android:layout_marginTop="25dp"
         android:background="@drawable/start_rounded_button"
         android:fontFamily="EuropaNuova"
-        android:text="Get started"
+        android:text="@string/start_btn_txt"
         android:textColor="@color/white"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tagline" />
 
     <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/getstartedbtn"
-        android:src="@drawable/people"
+        android:layout_marginTop="45dp"
         android:scaleType="centerCrop"
-        android:layout_marginTop="20dp"
+        android:src="@drawable/people"
         android:tint="@color/startpagebackground"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/getstartedbtn" />
 
 
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

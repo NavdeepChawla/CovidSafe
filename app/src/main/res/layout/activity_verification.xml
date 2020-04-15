@@ -1,154 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".VerificationActivity">
+    tools:context=".AuthenticationActivity.VerificationActivity">
+
 
     <TextView
-        android:layout_width="176dp"
-        android:layout_height="41dp"
-        android:text="@string/verification"
-        android:textColor="#15135B"
-        android:textSize="32dp"
-        android:fontFamily="EuropaNuova"
-        android:textStyle="bold"
-        android:layout_marginTop="124dp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginRight="163dp"/>
-
-    <TextView
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/enterotp"
-        android:textSize="20dp"
+        android:layout_marginTop="112dp"
         android:fontFamily="EuropaNuova"
+        android:text="@string/ver_txtverification"
+        android:textColor="#15135B"
+        android:textSize="32dp"
         android:textStyle="bold"
-        android:id="@+id/enterotptxt"
-        android:textColor="#9915135B"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginRight="245dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/enterotptxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:fontFamily="EuropaNuova"
+        android:text="@string/ver_enter_otp"
+        android:textColor="#9915135B"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <LinearLayout
         android:id="@+id/otp"
-        android:layout_centerHorizontal="true"
         android:layout_width="150dp"
         android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="72dp"
         android:orientation="horizontal"
-        android:layout_marginTop="66dp"
-        android:layout_marginLeft="145dp"
-        android:layout_marginRight="137dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterotptxt">
 
-    <EditText
-        android:id="@+id/otp1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:maxLength="1"
-        android:fontFamily="EuropaNuova-Regular"
-        android:textSize="30dp"
-        android:textColor="#15135B"
-        />
+        <EditText
+            android:id="@+id/otp1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="EuropaNuova-Regular"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textColor="#15135B"
+            android:textSize="30dp" />
 
         <EditText
             android:id="@+id/otp2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number"
             android:fontFamily="EuropaNuova-Regular"
-            android:textSize="30dp"
+            android:inputType="number"
             android:maxLength="1"
             android:textColor="#15135B"
-            />
+            android:textSize="30dp" />
+
         <EditText
             android:id="@+id/otp3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number"
             android:fontFamily="EuropaNuova-Regular"
-            android:textSize="30dp"
+            android:inputType="number"
             android:maxLength="1"
             android:textColor="#15135B"
-            />
+            android:textSize="30dp" />
 
         <EditText
             android:id="@+id/otp4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number"
             android:fontFamily="EuropaNuova-Regular"
-            android:textColor="#15135B"
+            android:inputType="number"
             android:maxLength="1"
-            android:textSize="30dp"
-            />
+            android:textColor="#15135B"
+            android:textSize="30dp" />
 
 
         <EditText
             android:id="@+id/otp5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number"
             android:fontFamily="EuropaNuova-Regular"
-            android:textSize="30dp"
+            android:inputType="number"
             android:maxLength="1"
             android:textColor="#15135B"
-            />
+            android:textSize="30dp" />
 
         <EditText
             android:id="@+id/otp6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number"
             android:fontFamily="EuropaNuova-Regular"
-            android:textColor="#15135B"
+            android:inputType="number"
             android:maxLength="1"
-            android:textSize="30dp"
-            />
+            android:textColor="#15135B"
+            android:textSize="30dp" />
 
     </LinearLayout>
 
     <TextView
-        android:layout_width="280dp"
-        android:layout_height="22dp"
-        android:text="@string/noreceiveotp"
-        android:layout_marginTop="55dp"
-        android:layout_marginRight="47.5dp"
-        android:layout_marginLeft="47.5dp"
-        android:fontFamily="EuropaNuova-Regular"
-        android:textSize="17dp"
-        android:textColor="#9915135B"
         android:id="@+id/noreceiveotp"
-        />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:fontFamily="EuropaNuova-Regular"
+        android:text="@string/ver_no_receiveotp"
+        android:textColor="#9915135B"
+        android:textSize="17dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/otp" />
 
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="18dp"
-            android:text="@string/resendotp"
-            android:textColor="@color/linkblue"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="149.5dp"
-            android:layout_marginRight="145.5dp"
-            android:textSize="14dp"
-            android:fontFamily="EuropaNuova-Regular"
-            android:id="@+id/resendotp"/>
+    <TextView
+        android:id="@+id/resendotp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="EuropaNuova-Regular"
+        android:text="@string/resendotp"
+        android:textColor="@color/linkblue"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noreceiveotp" />
 
-        <Button
-            android:text="Submit"
-            android:id="@+id/submitotp"
-            android:layout_width="194dp"
-            android:layout_height="49dp"
-            android:textColor="@color/white"
-            android:fontFamily="EuropaNuova"
-            android:textSize="18dp"
-            android:layout_marginTop="100dp"
-            android:layout_marginRight="90.5dp"
-            android:layout_marginLeft="90.5dp"
-            android:background="@drawable/start_rounded_button"
+    <Button
+        android:id="@+id/submitotp"
+        android:layout_width="194dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="148dp"
+        android:background="@drawable/start_rounded_button"
+        android:fontFamily="EuropaNuova"
+        android:text="@string/ver_submit"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resendotp" />
 
-            />
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

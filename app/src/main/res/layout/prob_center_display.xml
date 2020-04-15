@@ -1,6 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/Rellayout1"
+        android:id="@+id/Rellayout2"
+        android:layout_marginBottom="50dp">
 
-</android.support.constraint.ConstraintLayout>
+        <ImageView
+            android:layout_width="152dp"
+            android:layout_height="154dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/undraw_happy_feeling_slmw"
+            android:id="@+id/emptyimage"
+            android:layout_marginTop="80dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/emptyimage"
+            android:text="Nothing yet"
+            android:textSize="22dp"
+            android:fontFamily="EuropaNuova"
+            android:textStyle="bold"
+            android:textColor="#15135B"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="124.5dp"
+            android:id="@+id/nothing"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You haven't been in close proximity with any infected people"
+            android:layout_below="@id/nothing"
+            android:textSize="17dp"
+            android:id="@+id/ded"
+            android:fontFamily="EuropaNuova-Regular"
+            android:layout_marginLeft="36dp"
+            android:layout_marginRight="17dp"
+            android:textColor="#15135B"
+            android:layout_marginTop="24dp"/>
+
+    </RelativeLayout>
+</merge>

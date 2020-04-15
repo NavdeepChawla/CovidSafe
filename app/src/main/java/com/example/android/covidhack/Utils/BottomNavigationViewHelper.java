@@ -1,8 +1,14 @@
-package com.example.android.covidhack;
+package com.example.android.covidhack.Utils;
 
 import android.content.Context;
 import android.content.Intent;
 import androidx.annotation.NonNull;
+
+import com.example.android.covidhack.MainAppActivity.ContactActivity.ContactActivity;
+import com.example.android.covidhack.MainAppActivity.MapActivity;
+import com.example.android.covidhack.MainAppActivity.ProbabilityActivity;
+import com.example.android.covidhack.MainAppActivity.ProfileActivity.ProfileViewActivity;
+import com.example.android.covidhack.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import android.util.Log;
 import android.view.MenuItem;

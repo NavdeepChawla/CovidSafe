@@ -1,4 +1,4 @@
-package com.example.android.covidhack;
+package com.example.android.covidhack.MainAppActivity.ProfileActivity;
 
 import android.content.Context;
 import android.graphics.Bitmap;

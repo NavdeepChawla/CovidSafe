@@ -1,6 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-</android.support.constraint.ConstraintLayout>
+ <RelativeLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:layout_alignParentBottom="true">
+
+     <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+         android:layout_width="match_parent"
+         android:layout_height="80dp"
+         android:id="@+id/bottomNavViewBar"
+         app:menu="@menu/bottom_navigation_menu"
+         android:background="@drawable/white_grey_border_top"
+        >
+
+     </com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx>
+
+ </RelativeLayout>
+</merge>

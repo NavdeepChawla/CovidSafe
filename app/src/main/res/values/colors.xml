@@ -11,4 +11,10 @@
     <color name="linkblue">#0288D1</color>
     <color name="startpagebackground">#0D0055FF</color>
     <color name="compcoolor">#15135B</color>
+    <color name="grey">#0D0055FF</color>
+    <color name="prob0">#3dfa12</color>
+    <color name="prob5">#ffc316</color>
+    <color name="prob15">#FF9717</color>
+    <color name="prob40">#FF3A17</color>
+    <color name="prob75">#F80000</color>
 </resources>
