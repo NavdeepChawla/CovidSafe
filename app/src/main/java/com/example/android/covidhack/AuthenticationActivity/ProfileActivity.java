@@ -97,7 +97,9 @@ public class ProfileActivity extends AppCompatActivity {
 
                     }
                 });
-                database.collection("Identify").document(uuid).set(number);
+                Map<String,Object> ID=new HashMap<>();
+                ID.put("Number",number);
+                database.collection("Identify").document(uuid).set(ID);
 
                 Intent intent=new Intent(ProfileActivity.this, ContactActivity.class);
                 intent.putExtra("phnumber",number);
