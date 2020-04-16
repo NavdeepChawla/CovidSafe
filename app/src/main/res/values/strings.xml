@@ -44,6 +44,7 @@
     <string name="firebase_email" translatable="false">test@example.com</string>
     <string name="firebase_password" translatable="false">password</string>
 
+    <string name="PrivateKey">Access to Govt.</string>
 
     <string-array name="CountryCodes">
         <item>93,AF</item>

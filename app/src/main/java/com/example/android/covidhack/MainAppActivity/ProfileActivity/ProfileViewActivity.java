@@ -1,6 +1,7 @@
 package com.example.android.covidhack.MainAppActivity.ProfileActivity;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +9,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,6 +27,9 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.google.gson.Gson;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ProfileViewActivity extends AppCompatActivity {
 
     private static final String TAG = "ProfileViewActivity";
@@ -32,6 +38,8 @@ public class ProfileViewActivity extends AppCompatActivity {
     private TextView name,place,dob,email,toptxt;
     private FirebaseFirestore db;
     private ImageView barcode;
+    private DocumentSnapshot document;
+    private Map<String,Object> users=new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,20 +59,29 @@ public class ProfileViewActivity extends AppCompatActivity {
         db=FirebaseFirestore.getInstance();
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String number=user.getPhoneNumber();
+        assert user != null;
+        final String number=user.getPhoneNumber();
 
         DocumentReference docRef = db.collection("Profile").document(number);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
+                    document = task.getResult();
+                    assert document != null;
                     if (document.exists()) {
                         Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                         name.setText(""+document.get("Name"));
                         dob.setText(""+document.get("DateOfBirth"));
                         email.setText(""+document.get("Email"));
                         place.setText(""+document.get("Home"));
+                        users.put("Name",document.get("Name"));
+                        users.put("Email",document.get("Email"));
+                        users.put("DateOfBirth",document.get("DateOfBirth"));
+                        users.put("Mobile",document.get("Mobile"));
+                        users.put("Home",document.get("Home"));
+                        users.put("Probability",document.get("Probability"));
+                        users.put("ID",document.get("ID"));
                     } else {
                         Log.d(TAG, "No such document");
                     }
@@ -81,8 +98,16 @@ public class ProfileViewActivity extends AppCompatActivity {
                         .setMargin(2).getQRCOde();
         barcode.setImageBitmap(bitmap);
 
-
-
+        Button PrivateKey=findViewById(R.id.privateKey);
+        PrivateKey.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences prefs = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+                String privateKey=prefs.getString("PrivateKey","");
+                users.put("PrivateKey",privateKey);
+                db.collection("Profile").document(number).set(users);
+            }
+        });
 
         }
 

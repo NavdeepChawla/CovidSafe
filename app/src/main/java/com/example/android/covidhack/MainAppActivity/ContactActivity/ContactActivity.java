@@ -18,15 +18,9 @@ import android.os.Build;
 import android.preference.PreferenceManager;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.work.OneTimeWorkRequest;
-import androidx.work.PeriodicWorkRequest;
-import androidx.work.WorkInfo;
-import androidx.work.WorkManager;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -67,14 +61,14 @@ import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 public class ContactActivity extends AppCompatActivity
-        implements SharedPreferences.OnSharedPreferenceChangeListener{
+        implements SharedPreferences.OnSharedPreferenceChangeListener {
 
 
     private static final String TAG = "ContactActivity";
 
 
     private LocationManager lm;
-    private Context mcontext=ContactActivity.this;
+    private Context mcontext = ContactActivity.this;
 
 
     public ArrayList<BluetoothDevice> mBTDevices = new ArrayList<>();
@@ -86,8 +80,8 @@ public class ContactActivity extends AppCompatActivity
     private FirebaseFirestore db;
     private ActivityRecognitionClient activityRecognitionClient;
 
-    private Map<String,Object> recurdata;
-    private Map<String,Object> firebaseresult;
+    private Map<String, Object> recurdata;
+    private Map<String, Object> firebaseresult;
 
     private BottomNavigationViewEx bottomNavigationViewEx;
 
@@ -95,13 +89,14 @@ public class ContactActivity extends AppCompatActivity
 
     private TextView prob;
     private TextView blue;
-    private String emp="";
+    private String emp = "";
     private String number;
 
     public static final String DETECTED_ACTIVITY = ".DETECTED_ACTIVITY";
     public static final String DETECTED_TIME = ".DETECTED_TIME";
 
-    private TextView txtlat,txtlong,txtact,txtppl;
+    private TextView  txtact, txtppl;
+    public static TextView txtlat, txtlong;
 
     /**
      * Broadcast Receiver for listing devices that are not yet paired
@@ -115,16 +110,16 @@ public class ContactActivity extends AppCompatActivity
 
             if (action.equals(BluetoothDevice.ACTION_FOUND)) {
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                if(!mBTDevices.contains(device)) {
+                if (!mBTDevices.contains(device)) {
                     mBTDevices.add(device);
                 }
-                for(BluetoothDevice bd:mBTDevices){
+                for (BluetoothDevice bd : mBTDevices) {
                     //txtlistblue=" "+bd.getAddress()+"\n";
                 }
-                txtppl.setText("People around you: "+mBTDevices.size());
+                txtppl.setText("People around you: " + mBTDevices.size());
                 List<String> arrblue = new ArrayList<>();
-                arrblue.add(""+device.getAddress());
-                recurdata.put("Bluetooth",arrblue);
+                arrblue.add("" + device.getAddress());
+                recurdata.put("Bluetooth", arrblue);
                 //txtblue.setText(txtlistblue);
                 Log.d(TAG, "onReceive: " + device.getName() + ": " + device.getAddress());
             }
@@ -137,25 +132,25 @@ public class ContactActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
 
-        txtlat=(TextView)findViewById(R.id.txt_lattitude);
-        txtlong=(TextView)findViewById(R.id.txt_longitude);
-        txtact=(TextView)findViewById(R.id.txt_activity);
-        txtppl=(TextView)findViewById(R.id.txt_ppl_around);
-        prob=(TextView)findViewById(R.id.prob);
+        txtlat = (TextView) findViewById(R.id.txt_lattitude);
+        txtlong = (TextView) findViewById(R.id.txt_longitude);
+        txtact = (TextView) findViewById(R.id.txt_activity);
+        txtppl = (TextView) findViewById(R.id.txt_ppl_around);
+        prob = (TextView) findViewById(R.id.prob);
 
 
         requestLocationPermission();
         // Start the initial runnable task by posting through the handler
 
-        Intent intent=new Intent(this,FirebaseIntentService.class);
+        Intent intent = new Intent(this, FirebaseIntentService.class);
         startForegroundService(intent);
 
-        Intent myintent=getIntent();
-        final boolean Running = myintent.getBooleanExtra("Running",true);
+        Intent myintent = getIntent();
+        final boolean Running = myintent.getBooleanExtra("Running", true);
 
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        recurdata=new HashMap<>();
-        number =user.getPhoneNumber();
+        recurdata = new HashMap<>();
+        number = user.getPhoneNumber();
 
         db = FirebaseFirestore.getInstance();
 
@@ -167,15 +162,15 @@ public class ContactActivity extends AppCompatActivity
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
                         Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                        int probx= Integer.parseInt(document.get("Probability").toString());
-                        prob.setText(""+probx+"%");
-                        if(probx>75)
+                        int probx = Integer.parseInt(document.get("Probability").toString());
+                        prob.setText("" + probx + "%");
+                        if (probx > 75)
                             prob.setTextColor(getResources().getColor(R.color.prob75));
-                        else if(probx>40)
+                        else if (probx > 40)
                             prob.setTextColor(getResources().getColor(R.color.prob40));
-                        else if(probx>15)
+                        else if (probx > 15)
                             prob.setTextColor(getResources().getColor(R.color.prob15));
-                        else if(probx>5)
+                        else if (probx > 5)
                             prob.setTextColor(getResources().getColor(R.color.prob5));
                         else
                             prob.setTextColor(getResources().getColor(R.color.prob0));
@@ -190,17 +185,14 @@ public class ContactActivity extends AppCompatActivity
         });
 
 
-
         //blue.setText(emp);
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-        activityRecognitionClient=new ActivityRecognitionClient(this);
-
-
+        activityRecognitionClient = new ActivityRecognitionClient(this);
 
 
         activityRecognitionClient.requestActivityUpdates(
-                1000*40 ,
+                1000 * 40,
                 getActivityDetectionPendingIntent()).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void result) {
@@ -218,90 +210,117 @@ public class ContactActivity extends AppCompatActivity
         //startService(fireintent);
 
 
-        final Handler timecheck=new Handler();
+        final Handler timecheck = new Handler();
         /**
-        Runnable timecheckRunnable=new Runnable() {
-            @Override
-            public void run() {
-                timecheck.postDelayed(this, 1000);
-                SimpleDateFormat dateFormatGmt = new SimpleDateFormat("ss");
-                dateFormatGmt.setTimeZone(TimeZone.getTimeZone("GMT"));
-                int sec=Integer.parseInt(dateFormatGmt.format(new Date())+"");
+         Runnable timecheckRunnable=new Runnable() {
+        @Override public void run() {
+        timecheck.postDelayed(this, 1000);
+        SimpleDateFormat dateFormatGmt = new SimpleDateFormat("ss");
+        dateFormatGmt.setTimeZone(TimeZone.getTimeZone("GMT"));
+        int sec=Integer.parseInt(dateFormatGmt.format(new Date())+"");
 
-                SimpleDateFormat minute = new SimpleDateFormat("mm");
-                minute.setTimeZone(TimeZone.getTimeZone("GMT"));
-                int min=Integer.parseInt(minute.format(new Date())+"");
+        SimpleDateFormat minute = new SimpleDateFormat("mm");
+        minute.setTimeZone(TimeZone.getTimeZone("GMT"));
+        int min=Integer.parseInt(minute.format(new Date())+"");
 
-                if (min%2!=0) {
-                    if (sec==30) {
-                        btnDiscover();
+        if (min%2!=0) {
+        if (sec==30) {
+        btnDiscover();
 
-                        BluetoothAdapter myDevice = BluetoothAdapter.getDefaultAdapter();
-                        String deviceName = myDevice.getName();
+        BluetoothAdapter myDevice = BluetoothAdapter.getDefaultAdapter();
+        String deviceName = myDevice.getName();
 
-                        recurdata.put("Uniqueid",deviceName);
+        recurdata.put("Uniqueid",deviceName);
 
-                        if (ActivityCompat.checkSelfPermission(mcontext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(mcontext, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                            return;
-                        }
+        if (ActivityCompat.checkSelfPermission(mcontext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(mcontext, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        return;
+        }
 
-                        fusedLocationClient.getLastLocation()
-                                .addOnSuccessListener(ContactActivity.this, new OnSuccessListener<Location>() {
-                                    @Override
-                                    public void onSuccess(Location location) {
-                                        // Got last known location. In some rare situations this can be null.
-                                        if (location != null) {
-                                            // Logic to handle location object
-                                            List<Double> arr = new ArrayList<>();
-                                            double lat_d, long_d;
-                                            lat_d = location.getLatitude();
-                                            long_d = location.getLongitude();
-                                            arr.add(lat_d);
-                                            arr.add(long_d);
-                                            recurdata.put("Location", arr);
-                                            txtlat.setText("Lat : " + lat_d);
-                                            txtlong.setText("Long : " + long_d);
-                                            Date currentTimeobj = Calendar.getInstance().getTime();
-                                            String currentDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(currentTimeobj);
-                                            String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(currentTimeobj);
-                                            String currentDateandTime = currentDate + " at " + currentTime;
-                                            recurdata.put("TimeStamps", currentDateandTime);
-                                            long dateInsecs = (currentTimeobj.getTime()) / 1000;
-                                            db.collection("Profile").document(number).collection("TimeStamps").document("" + dateInsecs).set(recurdata)
-                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                        @Override
-                                                        public void onSuccess(Void aVoid) {
-                                                            //blue = (TextView) findViewById(R.id.ded);
-                                                            //blue.setText("" + recurdata.get("Activity"));
-                                                        }
-                                                    }).addOnFailureListener(new OnFailureListener() {
-                                                @Override
-                                                public void onFailure(@NonNull Exception e) {
-                                                    Log.d(TAG, "onFailure: ");
-                                                }
-                                            });
-                                        }
-                                    }
-                                });
+        fusedLocationClient.getLastLocation()
+        .addOnSuccessListener(ContactActivity.this, new OnSuccessListener<Location>() {
+        @Override public void onSuccess(Location location) {
+        // Got last known location. In some rare situations this can be null.
+        if (location != null) {
+        // Logic to handle location object
+        List<Double> arr = new ArrayList<>();
+        double lat_d, long_d;
+        lat_d = location.getLatitude();
+        long_d = location.getLongitude();
+        arr.add(lat_d);
+        arr.add(long_d);
+        recurdata.put("Location", arr);
+        txtlat.setText("Lat : " + lat_d);
+        txtlong.setText("Long : " + long_d);
+        Date currentTimeobj = Calendar.getInstance().getTime();
+        String currentDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(currentTimeobj);
+        String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(currentTimeobj);
+        String currentDateandTime = currentDate + " at " + currentTime;
+        recurdata.put("TimeStamps", currentDateandTime);
+        long dateInsecs = (currentTimeobj.getTime()) / 1000;
+        db.collection("Profile").document(number).collection("TimeStamps").document("" + dateInsecs).set(recurdata)
+        .addOnSuccessListener(new OnSuccessListener<Void>() {
+        @Override public void onSuccess(Void aVoid) {
+        //blue = (TextView) findViewById(R.id.ded);
+        //blue.setText("" + recurdata.get("Activity"));
+        }
+        }).addOnFailureListener(new OnFailureListener() {
+        @Override public void onFailure(@NonNull Exception e) {
+        Log.d(TAG, "onFailure: ");
+        }
+        });
+        }
+        }
+        });
 
-                    }
-                }
-            }
+        }
+        }
+        }
         };
 
-        timecheck.post(timecheckRunnable);
-        **/
+         timecheck.post(timecheckRunnable);
+         **/
 
-        String detectedActivity= ActivityIntentService.detectedActivityFromJson(
+        String detectedActivity = ActivityIntentService.detectedActivityFromJson(
                 PreferenceManager.getDefaultSharedPreferences(this)
-                .getString(DETECTED_ACTIVITY,""));
-        detectedActivity=detectedActivity.replace("\"","");
-        detectedActivity=detectedActivity.replace("\"","");
-        recurdata.put("Activity",detectedActivity);
+                        .getString(DETECTED_ACTIVITY, ""));
+        detectedActivity = detectedActivity.replace("\"", "");
+        detectedActivity = detectedActivity.replace("\"", "");
+        recurdata.put("Activity", detectedActivity);
         txtact.setText(detectedActivity);
 
-
         setupBottomNavigationView();
+
+        double latitude=0.0;
+        double longitude=0.0;
+        final LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        assert locationManager != null;
+        try {
+            if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                //TODO
+            }
+            Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            if(location!=null)
+            {
+                latitude=(double)Math.round(location.getLatitude() * 1000d) / 1000d;
+                longitude=(double)Math.round(location.getLongitude()*1000d)/1000d;
+            }
+            else{
+                location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                if(location!=null)
+                {
+                    latitude=(double)Math.round(location.getLatitude() * 1000d) / 1000d;
+                    longitude=(double)Math.round(location.getLongitude()*1000d)/1000d;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        String tempLat=Double.toString(latitude);
+        txtlat.setText(tempLat);
+        String tempLong=Double.toString(longitude);
+        txtlong.setText(tempLong);
     }
 
 

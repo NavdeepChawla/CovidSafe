@@ -22,13 +22,14 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.CountDownTimer;
 import android.os.IBinder;
-import android.os.Parcelable;
-import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.util.Base64;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.covidhack.R;
 import com.google.android.gms.location.ActivityRecognitionClient;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -36,8 +37,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.security.Key;
 import java.security.KeyFactory;
+import java.security.PublicKey;
 import java.security.spec.KeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.text.SimpleDateFormat;
@@ -192,7 +193,7 @@ public class FirebaseIntentService extends Service implements SharedPreferences.
                                         longitude=(double)Math.round(location.getLongitude()*1000d)/1000d;
                                     }
                                     else{
-                                        location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                                        location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                                         if(location!=null)
                                         {
                                             latitude=(double)Math.round(location.getLatitude() * 1000d) / 1000d;
@@ -206,6 +207,17 @@ public class FirebaseIntentService extends Service implements SharedPreferences.
                                 }
                                 exactLocation.add(latitude);
                                 exactLocation.add(longitude);
+                                try
+                                {
+                                    String tempLat=Double.toString(latitude);
+                                    ContactActivity.txtlat.setText(tempLat);
+                                    String tempLong=Double.toString(longitude);
+                                    ContactActivity.txtlong.setText(tempLong);
+                                }
+                                catch (Exception e)
+                                {
+                                    e.printStackTrace();
+                                }
                                 String loc=""+latitude+","+longitude;
                                 Data.put("Location",TestEncryptData(loc));
 
@@ -330,8 +342,8 @@ public class FirebaseIntentService extends Service implements SharedPreferences.
         return encryptRSAToString(dataToEncrypt, publicKey);
     }
 
-
     public static String encryptRSAToString(String clearText, String publicKey) {
+        /*
         String encryptedBase64 = "";
         try {
             KeyFactory keyFac = KeyFactory.getInstance("RSA");
@@ -350,6 +362,28 @@ public class FirebaseIntentService extends Service implements SharedPreferences.
         }
 
         return encryptedBase64.replaceAll("(\\r|\\n)", "");
+         */
+        String encryptedBase64 = "";
+        try {
+            KeyFactory keyFac = KeyFactory.getInstance("RSA");
+            KeySpec keySpec = new X509EncodedKeySpec(Base64.decode(publicKey.trim().getBytes(), Base64.DEFAULT));
+            PublicKey key = keyFac.generatePublic(keySpec);
+
+            // get an RSA cipher object and print the provider
+            //final Cipher cipher = Cipher.getInstance("RSA/ECB/OAEPWITHSHA-256ANDMGF1PADDING");
+
+            final Cipher cipher = Cipher.getInstance("RSA/NONE/OAEPWithSHA-512AndMGF1Padding");
+            // encrypt the plain text using the public key
+            cipher.init(Cipher.ENCRYPT_MODE, key);
+
+            byte[] encryptedBytes = cipher.doFinal(clearText.getBytes("UTF-8"));
+            encryptedBase64 = new String(Base64.encode(encryptedBytes, Base64.DEFAULT));
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return encryptedBase64;//.replaceAll("(\\r|\\n)", "");
     }
 
     /**
@@ -376,4 +410,5 @@ public class FirebaseIntentService extends Service implements SharedPreferences.
         return decryptedString;
     }
      **/
+
 }
